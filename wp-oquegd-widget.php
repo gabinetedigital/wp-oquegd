@@ -39,16 +39,13 @@ class OqueListaWidget extends WP_Widget
     extract($args, EXTR_SKIP);
  
     $args_query_post = '';
+    $txtreturn = '';
     
-    $titulo = empty($instance['titulo']) ? ' ' : apply_filters('widget_titulo', $instance['titulo']);
-    $colunas = $instance['colunas'];
-    $qtd = $instance['qtd'];
+    $titulo   = empty($instance['titulo']) ? ' ' : apply_filters('widget_titulo', $instance['titulo']);
+    $colunas  = $instance['colunas'];
+    $qtd 	  = $instance['qtd'];
     $custom_post = 'oquegd_oque';
  
-    echo "<li class='span".$instance['colunas']."'><div class='thumbnail oque_lista ".$instance['css_class']."'>";
-    
-    echo $before_title . $titulo . $after_title;;
-    
     if (!empty($qtd))
     	$args_query_post = $args_query_post . "posts_per_page=" . $qtd;
     
@@ -59,19 +56,29 @@ class OqueListaWidget extends WP_Widget
     	else 
     		$args_query_post = $args_query_post . "&post_type=" . $custom_post;
     }
-
     query_posts($args_query_post);
+	
+	$txtreturn .= "<div class='publicacoes'>";
+	$txtreturn .= "<h3>".$titulo."</h3>";
+	$txtreturn .= "<ul class='thumbnails'>";
+    
 	if (have_posts()) : 
-		echo "<ul>";
 		while (have_posts()) : the_post(); 
-			echo "<li><a href='".get_permalink()."'>".get_the_title()."</a><br>" . get_the_excerpt(). "</li>";
-	 		
+			//echo "<li><a href='".get_permalink()."'>".get_the_title()."</a><br>" . get_the_excerpt(). "</li>";
+			$txtreturn .= "<li class='span".$colunas."'>";
+			$txtreturn .= "<div class='thumbnail'>";
+			$txtreturn .= "<h4>".get_the_title()."</h4>";
+			$txtreturn .= get_the_content();
+			$txtreturn .= "</div>";
+			$txtreturn .= "</li>";
 		endwhile;
-		echo "</ul>";
 	endif; 
 	wp_reset_query();
- 
-	echo "</div></li>";
+
+	$txtreturn .= "</ul>";
+	$txtreturn .= "</div>";
+
+	echo $txtreturn;
   }
  
 }
