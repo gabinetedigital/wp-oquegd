@@ -5,7 +5,7 @@ class OqueListaWidget extends WP_Widget
 	function OqueListaWidget()
 	{
 		$widget_ops = array('classname' => 'OqueListaWidget', 'description' => 'O que é? Gabinete Digital. Lista de documentos O que é?' );
-		$this->WP_Widget('OqueListaWidget', 'Gabinete Digital - O que é?', $widget_ops);
+		$this->WP_Widget('OqueListaWidget', 'Gabinete Digital - O que é? Lista', $widget_ops);
 	}
 
 	function form($instance)
@@ -89,7 +89,7 @@ class OqueWidget extends WP_Widget
 	function OqueWidget()
 	{
 		$widget_ops = array('classname' => 'OqueWidget', 'description' => 'O que é? Gabinete Digital. Documento unico O que é?' );
-		$this->WP_Widget('OqueWidget', 'Gabinete Digital - O que é?', $widget_ops);
+		$this->WP_Widget('OqueWidget', 'Gabinete Digital - O que é? Único', $widget_ops);
 	}
 
 	function form($instance)
