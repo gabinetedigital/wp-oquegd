@@ -64,7 +64,6 @@ class OqueListaWidget extends WP_Widget
     
 	if (have_posts()) : 
 		while (have_posts()) : the_post(); 
-			//echo "<li><a href='".get_permalink()."'>".get_the_title()."</a><br>" . get_the_excerpt(). "</li>";
 			$txtreturn .= "<li class='span".$colunas."'>";
 			$txtreturn .= "<div class='thumbnail'>";
 			$txtreturn .= "<h4>".get_the_title()."</h4>";
