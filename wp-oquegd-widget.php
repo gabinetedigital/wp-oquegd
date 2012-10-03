@@ -58,7 +58,7 @@ class OqueListaWidget extends WP_Widget
     }
     query_posts($args_query_post);
 	
-	$txtreturn .= "<div class='publicacoes'>";
+	$txtreturn .= "<div class='publicacoes ".$instance['css_class']."'>";
 	$txtreturn .= "<h3>".$titulo."</h3>";
 	$txtreturn .= "<ul class='thumbnails'>";
     
